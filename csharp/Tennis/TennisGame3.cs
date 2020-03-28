@@ -26,8 +26,8 @@ namespace Tennis
             {
                 if (p2Score == p1Score)
                     return "Deuce";
-                scoreName = p2Score > p1Score ? p1Name : p2Name;
-                return ((p2Score - p1Score) * (p2Score - p1Score) == 1) ? "Advantage " + scoreName : "Win for " + scoreName;
+                string leadingPlayer = p2Score > p1Score ? p1Name : p2Name;
+                return ((p2Score - p1Score) * (p2Score - p1Score) == 1) ? "Advantage " + leadingPlayer : "Win for " + leadingPlayer;
             }
         }
 
