@@ -19,14 +19,14 @@ namespace Tennis
             if ((p2Score < 4 && p1Score < 4) && (p2Score + p1Score < 6))
             {
                 string[] scoreNames = { "Love", "Fifteen", "Thirty", "Forty" };
-                scoreName = scoreNames[p2Score];
-                return (p2Score == p1Score) ? scoreName + "-All" : scoreName + "-" + scoreNames[p1Score];
+                scoreName = scoreNames[p1Score];
+                return (p2Score == p1Score) ? scoreName + "-All" : scoreName + "-" + scoreNames[p2Score];
             }
             else
             {
                 if (p2Score == p1Score)
                     return "Deuce";
-                string leadingPlayer = p2Score > p1Score ? p1Name : p2Name;
+                string leadingPlayer = p1Score > p2Score ? p1Name : p2Name;
                 return ((p2Score - p1Score) * (p2Score - p1Score) == 1) ? "Advantage " + leadingPlayer : "Win for " + leadingPlayer;
             }
         }
@@ -34,9 +34,9 @@ namespace Tennis
         public void WonPoint(string playerName)
         {
             if (playerName == p1Name)
-                this.p2Score += 1;
-            else
                 this.p1Score += 1;
+            else
+                this.p2Score += 1;
         }
 
     }
