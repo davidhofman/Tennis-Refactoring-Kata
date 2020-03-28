@@ -21,60 +21,60 @@ namespace Tennis
                 player2Score += 1;
         }
 
+        private string GetEqualScore()
+        {
+            switch (player1Score)
+            {
+                case 0:
+                    return "Love-All";
+                case 1:
+                    return "Fifteen-All";
+                case 2:
+                    return "Thirty-All";
+                default:
+                    return "Deuce";
+            }
+        }
+        public string GetAdvantageScore()
+        {
+            var minusResult = player1Score - player2Score;
+            if (minusResult == 1) return "Advantage player1";
+            else if (minusResult == -1) return "Advantage player2";
+            else if (minusResult >= 2) return "Win for player1";
+            else return "Win for player2";
+        }
+        public string GetDefaultScore()
+        {
+            var tempScore = 0;
+            string score = "";
+            for (var i = 1; i < 3; i++)
+            {
+                if (i == 1) tempScore = player1Score;
+                else { score += "-"; tempScore = player2Score; }
+                switch (tempScore)
+                {
+                    case 0:
+                        score += "Love";
+                        break;
+                    case 1:
+                        score += "Fifteen";
+                        break;
+                    case 2:
+                        score += "Thirty";
+                        break;
+                    case 3:
+                        score += "Forty";
+                        break;
+                }
+            }
+            return score;
+        }
         public string GetScore()
         {
             string score = "";
-            var tempScore = 0;
-            if (player1Score == player2Score)
-            {
-                switch (player1Score)
-                {
-                    case 0:
-                        score = "Love-All";
-                        break;
-                    case 1:
-                        score = "Fifteen-All";
-                        break;
-                    case 2:
-                        score = "Thirty-All";
-                        break;
-                    default:
-                        score = "Deuce";
-                        break;
-
-                }
-            }
-            else if (player1Score >= 4 || player2Score >= 4)
-            {
-                var minusResult = player1Score - player2Score;
-                if (minusResult == 1) score = "Advantage player1";
-                else if (minusResult == -1) score = "Advantage player2";
-                else if (minusResult >= 2) score = "Win for player1";
-                else score = "Win for player2";
-            }
-            else
-            {
-                for (var i = 1; i < 3; i++)
-                {
-                    if (i == 1) tempScore = player1Score;
-                    else { score += "-"; tempScore = player2Score; }
-                    switch (tempScore)
-                    {
-                        case 0:
-                            score += "Love";
-                            break;
-                        case 1:
-                            score += "Fifteen";
-                            break;
-                        case 2:
-                            score += "Thirty";
-                            break;
-                        case 3:
-                            score += "Forty";
-                            break;
-                    }
-                }
-            }
+            if (player1Score == player2Score) score = GetEqualScore();
+            else if (player1Score >= 4 || player2Score >= 4) score = GetAdvantageScore();
+            else score = GetDefaultScore();
             return score;
         }
     }
