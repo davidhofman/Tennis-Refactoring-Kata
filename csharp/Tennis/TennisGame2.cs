@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Tennis
 {
     public class TennisGame2 : ITennisGame
@@ -9,6 +11,11 @@ namespace Tennis
         private string p2Result = "";
         private string p1Name;
         private string p2Name;
+        private Dictionary<int, string> scoreNames = new Dictionary<int, string>() {
+            { 0, "Love" },
+            { 1, "Fifteen" },
+            { 2, "Thirty" },
+            { 3, "Forty" }};
 
         public TennisGame2(string p1Name, string p2Name)
         {
