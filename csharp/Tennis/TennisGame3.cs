@@ -2,41 +2,41 @@ namespace Tennis
 {
     public class TennisGame3 : ITennisGame
     {
-        private int p2;
-        private int p1;
-        private string p1N;
-        private string p2N;
+        private int p1Score;
+        private int p2Score;
+        private string p1Name;
+        private string p2Name;
 
         public TennisGame3(string player1Name, string player2Name)
         {
-            this.p1N = player1Name;
-            this.p2N = player2Name;
+            this.p1Name = player1Name;
+            this.p2Name = player2Name;
         }
 
         public string GetScore()
         {
-            string s;
-            if ((p1 < 4 && p2 < 4) && (p1 + p2 < 6))
+            string scoreName;
+            if ((p2Score < 4 && p1Score < 4) && (p2Score + p1Score < 6))
             {
-                string[] p = { "Love", "Fifteen", "Thirty", "Forty" };
-                s = p[p1];
-                return (p1 == p2) ? s + "-All" : s + "-" + p[p2];
+                string[] scoreNames = { "Love", "Fifteen", "Thirty", "Forty" };
+                scoreName = scoreNames[p2Score];
+                return (p2Score == p1Score) ? scoreName + "-All" : scoreName + "-" + scoreNames[p1Score];
             }
             else
             {
-                if (p1 == p2)
+                if (p2Score == p1Score)
                     return "Deuce";
-                s = p1 > p2 ? p1N : p2N;
-                return ((p1 - p2) * (p1 - p2) == 1) ? "Advantage " + s : "Win for " + s;
+                scoreName = p2Score > p1Score ? p1Name : p2Name;
+                return ((p2Score - p1Score) * (p2Score - p1Score) == 1) ? "Advantage " + scoreName : "Win for " + scoreName;
             }
         }
 
         public void WonPoint(string playerName)
         {
             if (playerName == "player1")
-                this.p1 += 1;
+                this.p2Score += 1;
             else
-                this.p2 += 1;
+                this.p1Score += 1;
         }
 
     }
