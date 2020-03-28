@@ -16,10 +16,10 @@ namespace Tennis
             this.p2Name = p2Name;
         }
 
-        public string GetScore()
+        private string GetEqualScore()
         {
             var score = "";
-            if (p1Score == p2Score && p1Score < 3)
+            if (p1Score < 3)
             {
                 if (p1Score == 0)
                     score = "Love";
@@ -29,8 +29,14 @@ namespace Tennis
                     score = "Thirty";
                 score += "-All";
             }
-            if (p1Score == p2Score && p1Score > 2)
+            if (p1Score > 2)
                 score = "Deuce";
+            return score;
+        }
+        public string GetScore()
+        {
+            var score = "";
+            if (p1Score == p2Score) score = GetEqualScore();
 
             if (p1Score > 0 && p2Score == 0)
             {
