@@ -31,14 +31,10 @@ namespace Tennis
             if (p2Score < 4) p2Result = scoreNames[p2Score];
             score = p1Result + "-" + p2Result;
 
-            if (p1Score > p2Score && p2Score >= 3)
+            if (p1Score > 3 || p2Score > 3)
             {
-                score = "Advantage player1";
-            }
-
-            if (p2Score > p1Score && p1Score >= 3)
-            {
-                score = "Advantage player2";
+                if (p1Score > p2Score) score = "Advantage player1";
+                else score = "Advantage player2";
             }
 
             if (p1Score >= 4 && p2Score >= 0 && (p1Score - p2Score) >= 2)
