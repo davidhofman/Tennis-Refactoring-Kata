@@ -37,10 +37,10 @@ namespace Tennis
         }
         public string GetAdvantageScore()
         {
-            var minusResult = player1Score - player2Score;
-            if (minusResult == 1) return "Advantage player1";
-            else if (minusResult == -1) return "Advantage player2";
-            else if (minusResult >= 2) return "Win for player1";
+            int difference = player1Score - player2Score;
+            if (difference == 1) return "Advantage player1";
+            else if (difference == -1) return "Advantage player2";
+            else if (difference >= 2) return "Win for player1";
             else return "Win for player2";
         }
         public string GetDefaultScore()
