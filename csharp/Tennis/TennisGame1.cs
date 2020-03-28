@@ -9,6 +9,12 @@ namespace Tennis
         private string player1Name;
         private string player2Name;
 
+        private Dictionary<int,string> scoreNames = new Dictionary<int, string>() {
+            { 0, "Love" },
+            { 1, "Fifteen" },
+            { 2, "Thirty" },
+            { 3, "Forty" }};
+
         public TennisGame1(string player1Name, string player2Name)
         {
             this.player1Name = player1Name;
@@ -29,17 +35,8 @@ namespace Tennis
 
         private string GetEqualScore()
         {
-            switch (player1Score)
-            {
-                case 0:
-                    return "Love-All";
-                case 1:
-                    return "Fifteen-All";
-                case 2:
-                    return "Thirty-All";
-                default:
-                    return "Deuce";
-            }
+            return (player1Score >= 3) ? "Deuce" : scoreNames[player1Score] + "-All";
+
         }
 
         private string GetAdvantageScore()
@@ -53,36 +50,7 @@ namespace Tennis
 
         private string GetDefaultScore()
         {
-            var scoreNames = new Dictionary<int, string>() {
-            { 0, "Love" },
-            { 1, "Fifteen" },
-            { 2, "Thirty" },
-            { 3, "Forty" }};
             return scoreNames[player1Score] + "-" + scoreNames[player2Score];
-
-            var tempScore = 0;
-            string score = "";
-            for (var i = 1; i < 3; i++)
-            {
-                if (i == 1) tempScore = player1Score;
-                else { score += "-"; tempScore = player2Score; }
-                switch (tempScore)
-                {
-                    case 0:
-                        score += "Love";
-                        break;
-                    case 1:
-                        score += "Fifteen";
-                        break;
-                    case 2:
-                        score += "Thirty";
-                        break;
-                    case 3:
-                        score += "Forty";
-                        break;
-                }
-            }
-            return score;
         }
     }
 }
