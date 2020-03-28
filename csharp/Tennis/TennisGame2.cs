@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace Tennis
 {
@@ -25,27 +26,10 @@ namespace Tennis
 
         public string GetScore()
         {
-            var score = "";
             if (p1Score == p2Score) return (p1Score < 3) ? scoreNames[p1Score] + "-All" : "Deuce";
-            if (p1Score < 4) p1Result = scoreNames[p1Score];
-            if (p2Score < 4) p2Result = scoreNames[p2Score];
-            score = p1Result + "-" + p2Result;
-
-            if (p1Score > 3 || p2Score > 3)
-            {
-                if (p1Score > p2Score) score = "Advantage player1";
-                else score = "Advantage player2";
-            }
-
-            if (p1Score >= 4 && p2Score >= 0 && (p1Score - p2Score) >= 2)
-            {
-                score = "Win for player1";
-            }
-            if (p2Score >= 4 && p1Score >= 0 && (p2Score - p1Score) >= 2)
-            {
-                score = "Win for player2";
-            }
-            return score;
+            if (p1Score < 4 && p2Score < 4) return scoreNames[p1Score] + "-" + scoreNames[p2Score];
+            if (Math.Abs(p1Score - p2Score) == 1) return (p1Score > p2Score) ? "Advantage " + p1Name : "Advantage " + p2Name;
+            return (p1Score > p2Score) ? "Win for " + p1Name : "Win for " + p2Name;
         }
 
         public void WonPoint(string player)
