@@ -23,14 +23,10 @@ namespace Tennis
             this.p2Name = p2Name;
         }
 
-        private string GetEqualScore()
-        {
-            return (p1Score < 3) ? scoreNames[p1Score] + "-All" : "Deuce";
-        }
         public string GetScore()
         {
             var score = "";
-            if (p1Score == p2Score) score = GetEqualScore();
+            if (p1Score == p2Score) score = (p1Score < 3) ? scoreNames[p1Score] + "-All" : "Deuce";
 
             if (p1Score > 0 && p2Score == 0)
             {
