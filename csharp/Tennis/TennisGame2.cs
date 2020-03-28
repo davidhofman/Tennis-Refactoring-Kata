@@ -26,57 +26,10 @@ namespace Tennis
         public string GetScore()
         {
             var score = "";
-            if (p1Score == p2Score) score = (p1Score < 3) ? scoreNames[p1Score] + "-All" : "Deuce";
-
-            if (p1Score > 0 && p2Score == 0)
-            {
-                if (p1Score == 1)
-                    p1Result = "Fifteen";
-                if (p1Score == 2)
-                    p1Result = "Thirty";
-                if (p1Score == 3)
-                    p1Result = "Forty";
-
-                p2Result = "Love";
-                score = p1Result + "-" + p2Result;
-            }
-            if (p2Score > 0 && p1Score == 0)
-            {
-                if (p2Score == 1)
-                    p2Result = "Fifteen";
-                if (p2Score == 2)
-                    p2Result = "Thirty";
-                if (p2Score == 3)
-                    p2Result = "Forty";
-
-                p1Result = "Love";
-                score = p1Result + "-" + p2Result;
-            }
-
-            if (p1Score > p2Score && p1Score < 4)
-            {
-                if (p1Score == 2)
-                    p1Result = "Thirty";
-                if (p1Score == 3)
-                    p1Result = "Forty";
-                if (p2Score == 1)
-                    p2Result = "Fifteen";
-                if (p2Score == 2)
-                    p2Result = "Thirty";
-                score = p1Result + "-" + p2Result;
-            }
-            if (p2Score > p1Score && p2Score < 4)
-            {
-                if (p2Score == 2)
-                    p2Result = "Thirty";
-                if (p2Score == 3)
-                    p2Result = "Forty";
-                if (p1Score == 1)
-                    p1Result = "Fifteen";
-                if (p1Score == 2)
-                    p1Result = "Thirty";
-                score = p1Result + "-" + p2Result;
-            }
+            if (p1Score == p2Score) return (p1Score < 3) ? scoreNames[p1Score] + "-All" : "Deuce";
+            if (p1Score < 4) p1Result = scoreNames[p1Score];
+            if (p2Score < 4) p2Result = scoreNames[p2Score];
+            score = p1Result + "-" + p2Result;
 
             if (p1Score > p2Score && p2Score >= 3)
             {
