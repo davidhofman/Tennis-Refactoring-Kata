@@ -25,20 +25,7 @@ namespace Tennis
 
         private string GetEqualScore()
         {
-            var score = "";
-            if (p1Score < 3)
-            {
-                if (p1Score == 0)
-                    score = "Love";
-                if (p1Score == 1)
-                    score = "Fifteen";
-                if (p1Score == 2)
-                    score = "Thirty";
-                score += "-All";
-            }
-            if (p1Score > 2)
-                score = "Deuce";
-            return score;
+            return (p1Score < 3) ? scoreNames[p1Score] + "-All" : "Deuce";
         }
         public string GetScore()
         {
