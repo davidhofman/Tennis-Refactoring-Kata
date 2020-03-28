@@ -15,7 +15,7 @@ namespace Tennis
 
         public void WonPoint(string playerName)
         {
-            if (playerName == "player1")
+            if (playerName == player1Name)
                 player1Score += 1;
             else
                 player2Score += 1;
@@ -38,10 +38,10 @@ namespace Tennis
         public string GetAdvantageScore()
         {
             int difference = player1Score - player2Score;
-            if (difference == 1) return "Advantage player1";
-            else if (difference == -1) return "Advantage player2";
-            else if (difference >= 2) return "Win for player1";
-            else return "Win for player2";
+            if (difference == 1) return "Advantage " + player1Name;
+            else if (difference == -1) return "Advantage " + player2Name;
+            else if (difference >= 2) return "Win for " + player1Name;
+            else return "Win for " + player2Name;
         }
         public string GetDefaultScore()
         {
