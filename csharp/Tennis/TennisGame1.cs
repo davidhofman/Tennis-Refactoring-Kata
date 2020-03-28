@@ -71,11 +71,9 @@ namespace Tennis
         }
         public string GetScore()
         {
-            string score = "";
-            if (player1Score == player2Score) score = GetEqualScore();
-            else if (player1Score >= 4 || player2Score >= 4) score = GetAdvantageScore();
-            else score = GetDefaultScore();
-            return score;
+            if (player1Score == player2Score) return GetEqualScore();
+            else if (player1Score >= 4 || player2Score >= 4) return GetAdvantageScore();
+            else return GetDefaultScore();
         }
     }
 }
