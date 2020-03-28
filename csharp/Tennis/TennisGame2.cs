@@ -13,7 +13,6 @@ namespace Tennis
         public TennisGame2(string p1Name, string p2Name)
         {
             this.p1Name = p1Name;
-            p1Score = 0;
             this.p2Name = p2Name;
         }
 
