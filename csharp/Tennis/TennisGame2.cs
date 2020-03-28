@@ -7,9 +7,6 @@ namespace Tennis
     {
         private int p1Score;
         private int p2Score;
-
-        private string p1Result = "";
-        private string p2Result = "";
         private string p1Name;
         private string p2Name;
         private Dictionary<int, string> scoreNames = new Dictionary<int, string>() {
@@ -37,7 +34,6 @@ namespace Tennis
             if(player == p1Name) p1Score++;
             if(player == p2Name) p2Score++;
         }
-
     }
 }
 
