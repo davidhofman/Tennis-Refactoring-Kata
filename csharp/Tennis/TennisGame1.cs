@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Tennis
 {
     class TennisGame1 : ITennisGame
@@ -17,6 +19,12 @@ namespace Tennis
         {
             if (playerName == player1Name) player1Score ++;
             if (playerName == player2Name) player2Score++;
+        }
+        public string GetScore()
+        {
+            if (player1Score == player2Score) return GetEqualScore();
+            else if (player1Score >= 4 || player2Score >= 4) return GetAdvantageScore();
+            else return GetDefaultScore();
         }
 
         private string GetEqualScore()
@@ -45,6 +53,13 @@ namespace Tennis
 
         private string GetDefaultScore()
         {
+            var scoreNames = new Dictionary<int, string>() {
+            { 0, "Love" },
+            { 1, "Fifteen" },
+            { 2, "Thirty" },
+            { 3, "Forty" }};
+            return scoreNames[player1Score] + "-" + scoreNames[player2Score];
+
             var tempScore = 0;
             string score = "";
             for (var i = 1; i < 3; i++)
@@ -68,13 +83,6 @@ namespace Tennis
                 }
             }
             return score;
-        }
-
-        public string GetScore()
-        {
-            if (player1Score == player2Score) return GetEqualScore();
-            else if (player1Score >= 4 || player2Score >= 4) return GetAdvantageScore();
-            else return GetDefaultScore();
         }
     }
 }
